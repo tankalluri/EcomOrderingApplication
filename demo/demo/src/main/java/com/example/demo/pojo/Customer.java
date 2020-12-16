@@ -2,6 +2,7 @@ package com.example.demo.pojo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,9 +25,9 @@ public class Customer {
 	@Column(name = "name")
     private String name;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "add_id")
-    private Address add_id;
+    private Address address;
 	
 	@OneToMany
     @JoinColumn(name = "order_id")
@@ -52,12 +53,12 @@ public class Customer {
 		this.name = name;
 	}
 
-	public Address getAdd_id() {
-		return add_id;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAdd_id(Address add_id) {
-		this.add_id = add_id;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public List<Order> getOrder() {
