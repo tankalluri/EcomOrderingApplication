@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
@@ -15,8 +17,9 @@ import javax.persistence.Table;
 public class Customer {
 
 	@Id
-	@Column(name = "cust_id")
-    private String cust_id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "cust_id", unique = true, nullable = false, updatable = false)
+    private long cust_id;
 	
 	@Column(name = "name")
     private String name;
@@ -33,11 +36,11 @@ public class Customer {
     @JoinColumn(name = "payment_id")
     private List<Payment> payment;
 
-	public String getCust_id() {
+	public long getCust_id() {
 		return cust_id;
 	}
 
-	public void setCust_id(String cust_id) {
+	public void setCust_id(long cust_id) {
 		this.cust_id = cust_id;
 	}
 
