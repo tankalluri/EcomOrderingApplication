@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,11 +16,12 @@ import javax.persistence.Table;
 @Table(name = "order_details")
 public class Order {
 
-    @Id
-    @Column(name = "order_id")
-    private String order_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "order_id", unique = true, nullable = false, updatable = false)
+    private long order_id;
 
-    @Column(name = "status")
+	@Column(name = "status")
     private String status;
 
     @Column(name = "total")
@@ -39,14 +42,22 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "cust_id", nullable = false)
     private Customer cust;
+    
+    public Set<Item> getItem() {
+		return item;
+	}
 
-	public String getOrder_id() {
+	public void setItem(Set<Item> item) {
+		this.item = item;
+	}
+
+	public long getOrder_id() {
 		return order_id;
 	}
 
-	public void setOrder_id(String order_id) {
-		this.order_id = order_id;
-	}
+//	public void setOrder_id(long order_id) {
+//		this.order_id = order_id;
+//	}
 
 	public String getStatus() {
 		return status;

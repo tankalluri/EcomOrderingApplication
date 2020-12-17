@@ -19,7 +19,7 @@ public class Item {
     private long item_id;
 	
 	@ManyToOne
-    @JoinColumn(name="order_id", nullable=false)
+    @JoinColumn(name="order_id")
     private Order order;
 	
 	@Column(name = "itemName")
