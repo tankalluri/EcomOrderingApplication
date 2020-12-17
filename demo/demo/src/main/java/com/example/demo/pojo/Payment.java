@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,9 +21,9 @@ public class Payment {
 	@Column(name = "transaction_amount")
     private int transaction_amount;
 	
-	@OneToOne
-    @JoinColumn(name = "cust_id")
-    private Customer cust_id;
+	@ManyToOne
+    @JoinColumn(name = "cust_id", nullable = false)
+    private Customer cust;
 
 	public String getPayment_id() {
 		return payment_id;
@@ -49,11 +49,11 @@ public class Payment {
 		this.transaction_amount = transaction_amount;
 	}
 
-	public Customer getCust_id() {
-		return cust_id;
+	public Customer getCust() {
+		return cust;
 	}
 
-	public void setCust_id(Customer cust_id) {
-		this.cust_id = cust_id;
+	public void setCust(Customer cust) {
+		this.cust = cust;
 	}
 }

@@ -1,6 +1,6 @@
 package com.example.demo.pojo;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,13 +29,19 @@ public class Customer {
     @JoinColumn(name = "add_id")
     private Address address;
 	
-	@OneToMany
-    @JoinColumn(name = "order_id")
-    private List<Order> order;
+	@OneToMany(mappedBy="cust")
+    private Set<Order> order;
 	
-	@OneToMany
-    @JoinColumn(name = "payment_id")
-    private List<Payment> payment;
+	@OneToMany(mappedBy="cust")
+    private Set<Payment> payments;
+
+	public Set<Payment> getPayments() {
+		return payments;
+	}
+
+	public void setPayments(Set<Payment> payments) {
+		this.payments = payments;
+	}
 
 	public long getCust_id() {
 		return cust_id;
@@ -61,19 +67,11 @@ public class Customer {
 		this.address = address;
 	}
 
-	public List<Order> getOrder() {
+	public Set<Order> getOrder() {
 		return order;
 	}
 
-	public void setOrder(List<Order> order) {
+	public void setOrder(Set<Order> order) {
 		this.order = order;
-	}
-
-	public List<Payment> getPayment() {
-		return payment;
-	}
-
-	public void setPayment(List<Payment> payment) {
-		this.payment = payment;
 	}
 }

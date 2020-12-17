@@ -1,13 +1,13 @@
 package com.example.demo.pojo;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,12 +33,11 @@ public class Order {
     @Column(name = "shipping_charges")
     private int shipping_charges;
     
-    @OneToMany
-    @JoinColumn(name = "item_id")
-    private List<Item> item;
+    @OneToMany(mappedBy="order")
+    private Set<Item> item;
 
-    @OneToOne
-    @JoinColumn(name = "cust_id")
+    @ManyToOne
+    @JoinColumn(name = "cust_id", nullable = false)
     private Customer cust;
 
 	public String getOrder_id() {
@@ -87,14 +86,6 @@ public class Order {
 
 	public void setShipping_charges(int shipping_charges) {
 		this.shipping_charges = shipping_charges;
-	}
-
-	public List<Item> getItem() {
-		return item;
-	}
-
-	public void setItem(List<Item> item) {
-		this.item = item;
 	}
 
 	public Customer getCust() {
