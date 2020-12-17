@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,10 +32,16 @@ public class OrderController {
 		return orderService.createOrder(order);
 	}
 	
-	@GetMapping(value = "/getOrder", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<?> getOrder(@RequestBody Order order, HttpServletRequest request){ 
-		logger.info("In OrderController - Get Order");
-        	return orderService.getOrder(order);
+	@GetMapping(value = "/getOrders", produces = "application/json")
+	public ResponseEntity<?> getOrder(HttpServletRequest request){ 
+		logger.info("In OrderController - Get all orders");
+		return orderService.getOrder();
+	}
+	
+	@GetMapping(value = "/getOrderById/{id}", produces = "application/json")
+	public ResponseEntity<?> getOrderById(@PathVariable long id, HttpServletRequest request){ 
+		logger.info("In OrderController - Get Order by Id");
+        	return orderService.getOrderById(id);
 	}
 	
 	@PutMapping(value = "/updateOrder", produces = "application/json", consumes = "application/json")
@@ -43,9 +50,9 @@ public class OrderController {
     	return orderService.updateOrder(order);
 	}
     	
-    @DeleteMapping(value = "/deleteOrder", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<?> deleteOrder(@RequestBody Order order, HttpServletRequest request){ 
+    @DeleteMapping(value = "/deleteOrder/{id}")
+	public ResponseEntity<?> deleteOrder(@PathVariable("id") long id, HttpServletRequest request){ 
     	logger.info("In OrderController - Delete Order");
-    	return orderService.deleteOrder(order);
+    	return orderService.deleteOrder(id);
     }
 }
