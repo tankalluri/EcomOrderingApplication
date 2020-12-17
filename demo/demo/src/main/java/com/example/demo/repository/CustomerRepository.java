@@ -7,4 +7,5 @@ import com.example.demo.pojo.Customer;
 public interface CustomerRepository extends CrudRepository<Customer , Long> {
 
 	Customer findByName(String username);
+	Customer findById(long id);
 }

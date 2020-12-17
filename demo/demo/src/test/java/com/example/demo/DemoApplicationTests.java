@@ -102,6 +102,12 @@ class DemoApplicationTests {
 				// TODO Auto-generated method stub
 				return null;
 			}
+
+			@Override
+			public Customer findById(long id) {
+				// TODO Auto-generated method stub
+				return null;
+			}
 		}; 
 		AddressRepository addrepo = new AddressRepository() {
 			
