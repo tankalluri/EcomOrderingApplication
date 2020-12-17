@@ -55,14 +55,6 @@ public class Item {
 		this.item_id = item_id;
 	}
 
-	public String getName() {
-		return itemName;
-	}
-
-	public void setName(String name) {
-		this.itemName = name;
-	}
-
 	public int getQty() {
 		return qty;
 	}

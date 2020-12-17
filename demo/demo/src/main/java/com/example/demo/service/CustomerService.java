@@ -1,10 +1,13 @@
 package com.example.demo.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Util.ResponseMessage;
+import com.example.demo.controller.CustomerController;
 import com.example.demo.pojo.Address;
 import com.example.demo.pojo.Customer;
 import com.example.demo.repository.AddressRepository;
@@ -15,6 +18,8 @@ public class CustomerService {
 	
 	private final CustomerRepository custRepository;
 	private final AddressRepository addRepo;
+	private final static Logger logger = LoggerFactory.getLogger(CustomerController.class);
+	 
 
     public CustomerService(CustomerRepository customerRepository, AddressRepository addRepo) {
         this.custRepository = customerRepository;
@@ -36,11 +41,13 @@ public class CustomerService {
         Customer userByUsername = this.findByUserName(c.getName());
         if (userByUsername != null) {
             errorMessage.setMessage("Username already exists!");
+            logger.error("Username already exists!");
             return new ResponseEntity<>(errorMessage, HttpStatus.CONFLICT);
         }
         custRepository.save(cc);
         addRepo.save(addCust);
         errorMessage.setMessage("User registered successfully.");
+        logger.info("User registered successfully.");
         return new ResponseEntity<>(errorMessage, HttpStatus.OK);
 	}
 	

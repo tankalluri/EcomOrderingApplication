@@ -55,9 +55,9 @@ public class Order {
 		return order_id;
 	}
 
-//	public void setOrder_id(long order_id) {
-//		this.order_id = order_id;
-//	}
+	public void setOrder_id(long order_id) {
+		this.order_id = order_id;
+	}
 
 	public String getStatus() {
 		return status;
