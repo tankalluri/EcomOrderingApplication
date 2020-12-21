@@ -17,7 +17,7 @@ public class Payment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "payment_id", unique = true, nullable = false, updatable = false)
+	@Column(name = "payment_id", unique = true, updatable = false)
     private long payment_id;
 	
 	@Column(name = "date")
@@ -27,7 +27,7 @@ public class Payment {
     private int transaction_amount;
 	
 	@ManyToOne
-    @JoinColumn(name = "cust_id", nullable = false)
+    @JoinColumn(name = "cust_id")
     private Customer cust;
 
 	public long getPayment_id() {

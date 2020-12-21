@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.pojo.Customer;
 import com.example.demo.service.PaymentService;
 
 @RestController
@@ -22,7 +23,7 @@ public class PaymentController {
 	}
 
 	@PostMapping(value = "/paymentById", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<?> makePayment(@RequestBody long id, HttpServletRequest request){
+	public ResponseEntity<?> makePayment(@RequestBody Customer id, HttpServletRequest request){
 		logger.info("In PaymentController - Make payment");
 		return payS.makePayment(id);
 	}
