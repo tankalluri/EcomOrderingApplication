@@ -11,6 +11,7 @@ import com.example.demo.pojo.Order;
 @Repository
 public interface OrderRepository extends CrudRepository<Order , Long>{
 	Order findById(long id);
+	//Order findByCustId(long id);
     List<Order> findAll();
     @Transactional
     void deleteById(long id);

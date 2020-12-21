@@ -23,8 +23,8 @@ public class PaymentController {
 	}
 
 	@PostMapping(value = "/paymentById", produces = "application/json", consumes = "application/json")
-	public ResponseEntity<?> makePayment(@RequestBody Customer id, HttpServletRequest request){
+	public ResponseEntity<?> makePayment(@RequestBody Customer c, HttpServletRequest request){
 		logger.info("In PaymentController - Make payment");
-		return payS.makePayment(id);
+		return payS.makePayment(c);
 	}
 }

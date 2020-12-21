@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Util.ResponseMessage;
-import com.example.demo.controller.CustomerController;
 import com.example.demo.pojo.Item;
 import com.example.demo.repository.ItemRepository;
 
