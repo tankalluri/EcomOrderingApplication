@@ -38,6 +38,12 @@ public class OrderController {
 		return orderService.getOrder();
 	}
 	
+	@GetMapping(value = "/getOrderDetails", produces = "application/json")
+	public String getOrderDetails(HttpServletRequest request){ 
+		logger.info("In OrderController - Get all orders");
+		return "Success";
+	}
+	
 	@GetMapping(value = "/getOrderById/{id}", produces = "application/json")
 	public ResponseEntity<?> getOrderById(@PathVariable long id, HttpServletRequest request){ 
 		logger.info("In OrderController - Get Order by Id");
