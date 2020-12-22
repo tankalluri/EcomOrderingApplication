@@ -1,7 +1,8 @@
 # EcomOrderingApplication
 This is an E-commerce application to order products.
 
-This was built using Java, Spring Boot microservices and Mockito 
+This application was developed using Java, Spring Boot microservices.
+JUnit testing was done using the Mockito framework. 
 
 Swagger Documentation
 -- https://app.swaggerhub.com/apis/Tanmayee7/ecomOrdering/1.0.0
