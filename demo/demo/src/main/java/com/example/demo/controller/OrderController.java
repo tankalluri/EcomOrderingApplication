@@ -40,7 +40,7 @@ public class OrderController {
 	
 	@GetMapping(value = "/getOrderDetails", produces = "application/json")
 	public String getOrderDetails(HttpServletRequest request){ 
-		logger.info("In OrderController - Get all orders");
+		logger.info("In OrderController - Get order details");
 		return "Success";
 	}
 	
